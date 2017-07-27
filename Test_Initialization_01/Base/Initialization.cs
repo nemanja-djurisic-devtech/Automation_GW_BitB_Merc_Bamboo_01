@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
@@ -64,20 +63,13 @@ namespace Test_Initialization_01.Base
             switch (browserName)
             {
                 case "Chrome":
-                    //Driver = new ChromeDriver(chromeOptions);
-                    //Driver = new WebClient(BrowserVersion.CHROME);
-                    Driver = new RemoteWebDriver(new Uri("http://127.0.0.1:4444/wd/hub"), DesiredCapabilities.Chrome());
+                    Driver = new ChromeDriver(chromeOptions);
                     Driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(30));
                     Driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMinutes(30));
                     Driver.Manage().Timeouts().SetScriptTimeout(TimeSpan.FromSeconds(30));
                     break;
                 case "FireFox":
                     Driver = new FirefoxDriver();
-                    //DesiredCapabilities capability = DesiredCapabilities.Firefox();
-                    //capability.SetCapability("version", "0.18.0");
-
-                    //Driver = new RemoteWebDriver(new Uri("http://127.0.0.2:4444/wd/hub"), capability);
-
                     break;
             }
 
