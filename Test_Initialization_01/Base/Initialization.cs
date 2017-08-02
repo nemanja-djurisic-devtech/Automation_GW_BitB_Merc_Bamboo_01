@@ -77,7 +77,9 @@ namespace Test_Initialization_01.Base
                     //capability.SetCapability("version", "0.18.0");
 
                     //Driver = new RemoteWebDriver(new Uri("http://127.0.0.2:4444/wd/hub"), capability);
-
+                    Driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(30));
+                    Driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMinutes(30));
+                    Driver.Manage().Timeouts().SetScriptTimeout(TimeSpan.FromSeconds(30));
                     break;
             }
 
