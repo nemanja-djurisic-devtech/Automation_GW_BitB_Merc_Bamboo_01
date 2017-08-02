@@ -64,9 +64,9 @@ namespace Test_Initialization_01.Base
             switch (browserName)
             {
                 case "Chrome":
-                    //Driver = new ChromeDriver(chromeOptions);
+                    Driver = new ChromeDriver(chromeOptions);
                     //Driver = new WebClient(BrowserVersion.CHROME);
-                    Driver = new RemoteWebDriver(new Uri("http://127.0.0.1:4444/wd/hub"), DesiredCapabilities.Chrome());
+                    //Driver = new RemoteWebDriver(new Uri("http://127.0.0.1:4444/wd/hub"), DesiredCapabilities.Chrome());
                     Driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(30));
                     Driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMinutes(30));
                     Driver.Manage().Timeouts().SetScriptTimeout(TimeSpan.FromSeconds(30));
