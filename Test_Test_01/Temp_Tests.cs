@@ -4,8 +4,8 @@ using Test_Initialization_01.Base;
 
 namespace Test_Test_01
 {
-    [TestFixture("FireFox", "Develop1")]
-    //[TestFixture("Chrome", "Develop1")]
+    //[TestFixture("FireFox", "Develop1")]
+    [TestFixture("Chrome", "Develop1")]
 
     public class Temp_Tests : Initialization
     {
