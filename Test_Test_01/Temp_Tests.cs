@@ -41,7 +41,7 @@ namespace Test_Test_01
         [Test]
         public void VerifyPage()
         {
-            //webPage1.VerifyTextField("Google");
+            webPage1.VerifyTextField("Google");
         }
 
         [TearDown]
