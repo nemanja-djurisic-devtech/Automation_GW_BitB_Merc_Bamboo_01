@@ -42,6 +42,7 @@ namespace Test_Test_01
         public void VerifyPage()
         {
             webPage1.VerifyTextField("Google");
+            webPage1.SearchGoogle("devtech");
         }
 
         [TearDown]

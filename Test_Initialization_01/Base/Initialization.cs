@@ -10,13 +10,19 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using Test_Initialization_01.Pages;
 using Test_Initialization_01.Data;
+using NUnit;
 using NUnit.Framework;
+using SimpleBrowser.WebDriver;
+using NHtmlUnit.Html;
+using NHtmlUnit;
 
 namespace Test_Initialization_01.Base
 {
     public class Initialization
     {
         public IWebDriver Driver { get; set; }
+
+        //public NHtmlUnit.WebClient { Set; Set; }
 
         public WebDriverWait Wait;
 
@@ -58,25 +64,22 @@ namespace Test_Initialization_01.Base
             chromeOptions.AddArguments("--enable-precise-memory-info");
             chromeOptions.AddArguments("--disable-popup-blocking");
             chromeOptions.AddArguments("--disable-default-apps");
-            chromeOptions.AddArguments("disable-infobars");
+            //chromeOptions.AddArguments("--headless");
+            chromeOptions.AddArguments("--disable-infobars");
             chromeOptions.AddArguments("--disable-settings-window");
 
             switch (browserName)
             {
                 case "Chrome":
                     Driver = new ChromeDriver(chromeOptions);
-                    //Driver = new WebClient(BrowserVersion.CHROME);
-                    //Driver = new RemoteWebDriver(new Uri("http://127.0.0.1:4444/wd/hub"), DesiredCapabilities.Chrome());
+
                     Driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(30));
                     Driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMinutes(30));
                     Driver.Manage().Timeouts().SetScriptTimeout(TimeSpan.FromSeconds(30));
                     break;
-                case "FireFox":
+                case "FireFox":                    
                     Driver = new FirefoxDriver();
-                    //DesiredCapabilities capability = DesiredCapabilities.Firefox();
-                    //capability.SetCapability("version", "0.18.0");
 
-                    //Driver = new RemoteWebDriver(new Uri("http://127.0.0.2:4444/wd/hub"), capability);
                     Driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(30));
                     Driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMinutes(30));
                     Driver.Manage().Timeouts().SetScriptTimeout(TimeSpan.FromSeconds(30));
@@ -92,7 +95,7 @@ namespace Test_Initialization_01.Base
         public void GoTo(string url)
         {
             Driver.Navigate().GoToUrl(url);
-            Driver.Manage().Window.Maximize();
+            //Driver.Manage().Window.Maximize();
         }
 
         public void CloseBrowser(IWebDriver Driver)

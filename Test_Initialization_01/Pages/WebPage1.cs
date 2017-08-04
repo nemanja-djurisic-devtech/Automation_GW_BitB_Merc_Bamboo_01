@@ -22,6 +22,10 @@ namespace Test_Initialization_01.Pages
         [FindsBy(How = How.Id, Using = "_eEe")]
         public IWebElement TextField { get; set; }
 
+        //Search field
+        [FindsBy(How = How.Id, Using = "lst-ib")]
+        public IWebElement SearchField { get; set; }
+
 
         //---------- A C T I O N S ----------//
 
@@ -30,6 +34,13 @@ namespace Test_Initialization_01.Pages
         public void VerifyTextField(string text)
         {
             Assert.IsTrue(TextField.Text.Contains(text));
+        }
+
+        //Search Google
+        public void SearchGoogle(string search)
+        {
+            SearchField.SendKeys(search);
+            SearchField.SendKeys(Keys.Enter);
         }
     }
 }
